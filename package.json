@@ -1,0 +1,13 @@
+{
+  "name": "dashboard-fias-dinamico",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:data": "node scripts/build-data.mjs",
+    "build:arriendo": "node scripts/build-arriendo-data.mjs"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}

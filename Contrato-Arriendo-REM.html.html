@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Control Contrato Arriendo FIAS-2025-159</title>
+<style>
+:root {
+  --bg:#f4f7fb; --surface:#fff; --text:#172033; --muted:#667085; --line:#d9e2ec;
+  --canon:#153e75; --expensa:#0f766e; --servicio:#7c2d12; --resumen:#1f2937;
+  --success:#0f766e; --warning:#d97706; --danger:#b91c1c; --blue:#2563eb;
+  --shadow:0 16px 40px rgba(15,23,42,.10); --radius:18px;
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#eef5ff,#f7fbf8 44%,#fff7ed);color:var(--text)}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.app{width:min(1500px,calc(100% - 28px));margin:0 auto;padding:24px 0 42px}
+.hero{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:stretch;background:linear-gradient(135deg,#102a56,#153e75 55%,#0f766e);color:#fff;padding:26px;border-radius:26px;box-shadow:var(--shadow)}
+.logo-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap} .logo{height:42px;max-width:150px;object-fit:contain;background:#fff;border-radius:12px;padding:7px 10px}
+.eyebrow{padding:7px 12px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.12);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+h1{font-size:clamp(25px,4vw,44px);line-height:1.05;margin:14px 0 8px;letter-spacing:-.04em} p{line-height:1.55}
+.hero p{max-width:960px;color:rgba(255,255,255,.84);margin:0} .credit{margin-top:12px;color:rgba(255,255,255,.82);font-weight:700} .credit a{color:#fff;background:#0a66c2;border-radius:999px;padding:6px 10px;margin-left:6px}
+.side{display:grid;gap:10px;min-width:260px} .hero-card{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:14px} .hero-card strong{display:block;color:rgba(255,255,255,.72);font-size:12px;text-transform:uppercase} .hero-card span{font-size:21px;font-weight:900}
+.panel{background:rgba(255,255,255,.88);border:1px solid rgba(217,226,236,.92);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(8px)} .section{margin-top:16px}
+.note{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:14px} .note-card{border:1px solid var(--line);border-radius:15px;background:#fff;padding:14px} .note-card b{display:block;margin-bottom:6px}
+.filters{display:grid;grid-template-columns:180px 210px 1fr auto;gap:12px;align-items:end;padding:16px} label{display:block;color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:6px} select,input{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 12px;min-height:42px} button{border:0;border-radius:12px;padding:11px 14px;font-weight:900;cursor:pointer;background:var(--blue);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(7,minmax(145px,1fr));gap:12px;margin-top:16px} .kpi{padding:15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 18px rgba(15,23,42,.06)} .kpi .label{font-size:11px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.03em} .kpi .value{font-size:clamp(18px,2.4vw,28px);font-weight:950;letter-spacing:-.04em;margin-top:7px} .kpi .hint{font-size:12px;color:var(--muted);margin-top:4px}
+.table-head{padding:18px 18px 0;display:flex;justify-content:space-between;gap:16px;align-items:flex-start} .table-head h2{margin:0;font-size:20px} .table-head p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.table-wrap{margin-top:14px;overflow:auto;max-height:620px;border-top:1px solid var(--line)} table{width:100%;border-collapse:separate;border-spacing:0;min-width:1900px;background:#fff} th,td{padding:10px 10px;border-bottom:1px solid #edf1f7;border-right:1px solid #edf1f7;text-align:left;font-size:12.5px;vertical-align:middle} th{position:sticky;top:0;z-index:3;background:#f8fafc;color:#475467;font-weight:900;text-transform:uppercase;letter-spacing:.025em;white-space:nowrap} thead tr.group th{top:0;color:#fff;text-align:center;font-size:12px;border-right:1px solid rgba(255,255,255,.18)} thead tr.fields th{top:39px}
+.group-id{background:#334155!important} .group-canon{background:var(--canon)!important} .group-expensa{background:var(--expensa)!important} .group-servicio{background:var(--servicio)!important} .group-resumen{background:var(--resumen)!important}
+td.money{text-align:right;font-weight:850;font-variant-numeric:tabular-nums} td.center{text-align:center} .badge{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:950;white-space:nowrap} .Pagado,.Completo{background:#dcfce7;color:#166534} .Parcial{background:#fef3c7;color:#92400e} .Pendiente{background:#fee2e2;color:#991b1b}
+.link-pill{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-weight:900;min-width:84px} .muted{color:var(--muted)}
+.footer{color:var(--muted);font-size:12px;padding:10px 2px}
+@media(max-width:1100px){.hero{grid-template-columns:1fr}.side{grid-template-columns:repeat(3,1fr);min-width:0}.note{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.app{width:calc(100% - 18px);padding-top:12px}.hero{padding:19px;border-radius:20px}.side,.filters,.kpis{grid-template-columns:1fr}.table-head{display:block}}
+@media print{body{background:#fff}.filters,button{display:none!important}.app{width:100%;padding:0}.hero,.panel,.kpi{box-shadow:none}.table-wrap{max-height:none;overflow:visible}}
+</style>
+</head>
+<body>
+<div class="app">
+  <section class="hero">
+    <div>
+      <div class="logo-row"><img class="logo" src="https://fias.org.ec/wp-content/uploads/2021/11/Logo_FIAS_web.png" alt="FIAS" onerror="this.style.display='none'"></div>
+      <h1>Contrato FIAS-2025-159 | Arrendamiento Oficina 8B REM</h1>
+      
+      <div class="credit">Administración del contrato:<a href="https://ec.linkedin.com/in/jair-cruz-gallegos-65998776" target="_blank" rel="noopener">Jair Cruz</a></div>
+    </div>
+    <div class="side">
+      <div class="hero-card"><strong>Canon fijo</strong><span id="heroCanon">$0,00</span></div>
+      <div class="hero-card"><strong>Expensa fija</strong><span id="heroExpensa">$0,00</span></div>
+      <div class="hero-card"><strong>Total fijo mensual</strong><span id="heroFixed">$0,00</span></div>
+    </div>
+  </section>
+
+  
+
+  <section class="panel section">
+    <div class="filters">
+      <div><label>Año</label><select id="yearFilter"></select></div>
+      <div><label>Estado mensual</label><select id="statusFilter"><option value="Todos">Todos</option><option value="Completo">Completo</option><option value="Parcial">Parcial</option><option value="Pendiente">Pendiente</option></select></div>
+      <div><label>Buscar</label><input id="searchBox" type="search" placeholder="Mes, factura, solicitud o notificación..."></div>
+      <button id="resetBtn">Limpiar filtros</button>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="panel section">
+    <div class="table-head"><div><h2>Matriz de ejecución con enlaces junto a cada tipo de pago</h2><p>El orden de columnas reproduce la lógica de control: identificación, bloque canon, bloque expensas, bloque servicios y resumen.</p></div><button onclick="window.print()">Imprimir / PDF</button></div>
+    <div class="table-wrap"><table id="dataTable"><thead></thead><tbody></tbody></table></div>
+  </section>
+  <div class="footer"></div>
+</div>
+<script>
+let DATA = {
+  registros: [],
+  resumen: {
+    canon: 0,
+    expensa: 0,
+    fixed: 0,
+    fixed_executed: 0,
+    fixed_balance: 0,
+    services: 0,
+    total: 0,
+    complete: 0,
+    partial: 0,
+    pending: 0,
+    months: 0
+  }
+};
+
+const DATA_URL = './data/control-arriendo.json';
+
+const money = new Intl.NumberFormat('es-EC', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+});
+
+const fmt = v => money.format(Number(v) || 0);
+
+const norm = t => String(t ?? '')
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '');
+
+const el = id => document.getElementById(id);
+
+const columns = [
+  {key:'periodo',label:'Periodo'},
+  {key:'estado_mensual',label:'Estado mes',type:'badge'},
+
+  {key:'estado_canon',label:'Estado canon',type:'badge'},
+  {key:'canon_ejecutado',label:'Canon ejecutado',type:'money'},
+  {key:'factura_canon',label:'Factura/obs. canon'},
+  {key:'fecha_pago_canon',label:'Fecha canon'},
+  {key:'solicitud_pago_canon',label:'Solicitud canon'},
+  {key:'link_expediente_canon',label:'Enlace canon',type:'link'},
+
+  {key:'estado_expensas',label:'Estado expensa',type:'badge'},
+  {key:'expensas_ejecutadas',label:'Expensa ejecutada',type:'money'},
+  {key:'notificacion_expensas',label:'Notificación expensa'},
+  {key:'fecha_pago_expensas',label:'Fecha expensa'},
+  {key:'solicitud_pago_expensas',label:'Solicitud expensa'},
+  {key:'link_expediente_expensas',label:'Enlace expensa',type:'link'},
+
+  {key:'estado_servicios',label:'Estado servicios',type:'badge'},
+  {key:'servicios_basicos',label:'Servicios USD',type:'money'},
+  {key:'factura_servicios',label:'Factura/obs. servicios'},
+  {key:'fecha_pago_servicios',label:'Fecha servicios'},
+  {key:'solicitud_pago_servicios',label:'Solicitud servicios'},
+  {key:'link_expediente_servicios',label:'Enlace servicios',type:'link'},
+
+  {key:'saldo_fijo',label:'Saldo fijo',type:'money'},
+  {key:'desembolso_total',label:'Desembolso total',type:'money'},
+  {key:'observacion',label:'Observación'}
+];
+
+function safeText(value) {
+  return String(value ?? '')
+    .replace(/[&<>"']/g, char => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[char]));
+}
+
+function computeResumen(rows) {
+  const canon = rows.find(r => Number(r.canon_programado) > 0)?.canon_programado || 0;
+  const expensa = rows.find(r => Number(r.expensas_programadas) > 0)?.expensas_programadas || 0;
+
+  return {
+    canon: Number(canon) || 0,
+    expensa: Number(expensa) || 0,
+    fixed: (Number(canon) || 0) + (Number(expensa) || 0),
+    fixed_executed: rows.reduce((s, r) => s + (Number(r.fijo_ejecutado) || 0), 0),
+    fixed_balance: rows.reduce((s, r) => s + (Number(r.saldo_fijo) || 0), 0),
+    services: rows.reduce((s, r) => s + (Number(r.servicios_basicos) || 0), 0),
+    total: rows.reduce((s, r) => s + (Number(r.desembolso_total) || 0), 0),
+    complete: rows.filter(r => r.estado_mensual === 'Completo').length,
+    partial: rows.filter(r => r.estado_mensual === 'Parcial').length,
+    pending: rows.filter(r => r.estado_mensual === 'Pendiente').length,
+    months: rows.length
+  };
+}
+
+function setStatus(message, isError = false) {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  footer.textContent = message || '';
+  footer.style.color = isError ? '#b91c1c' : '';
+}
+
+async function loadData() {
+  try {
+    setStatus('Cargando datos dinámicos...');
+
+    const response = await fetch(`${DATA_URL}?v=${Date.now()}`, {
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error(`No se pudo cargar ${DATA_URL}. HTTP ${response.status}`);
+    }
+
+    const payload = await response.json();
+
+    if (!payload || !Array.isArray(payload.registros)) {
+      throw new Error('El JSON no tiene la estructura esperada: { registros: [], resumen: {} }.');
+    }
+
+    DATA.registros = payload.registros;
+    DATA.resumen = payload.resumen || computeResumen(DATA.registros);
+
+    init();
+    setStatus(`Fuente dinámica: ${DATA_URL}. Registros cargados: ${DATA.registros.length}. Última lectura: ${new Date().toLocaleString('es-EC')}.`);
+  } catch (error) {
+    console.error('Error cargando datos dinámicos del dashboard:', error);
+
+    DATA = {
+      registros: [],
+      resumen: computeResumen([])
+    };
+
+    init();
+    setStatus(`Error de carga dinámica: ${error.message}`, true);
+  }
+}
+
+function init() {
+  const years = [...new Set(DATA.registros.map(r => r.anio).filter(Boolean))].sort();
+
+  el('yearFilter').innerHTML =
+    '<option value="Todos">Todos</option>' +
+    years.map(y => `<option value="${safeText(y)}">${safeText(y)}</option>`).join('');
+
+  el('heroCanon').textContent = fmt(DATA.resumen.canon);
+  el('heroExpensa').textContent = fmt(DATA.resumen.expensa);
+  el('heroFixed').textContent = fmt(DATA.resumen.fixed);
+
+  ['yearFilter', 'statusFilter', 'searchBox'].forEach(id => {
+    const node = el(id);
+    if (!node.dataset.bound) {
+      node.addEventListener('input', render);
+      node.addEventListener('change', render);
+      node.dataset.bound = '1';
+    }
+  });
+
+  if (!el('resetBtn').dataset.bound) {
+    el('resetBtn').onclick = () => {
+      el('yearFilter').value = 'Todos';
+      el('statusFilter').value = 'Todos';
+      el('searchBox').value = '';
+      render();
+    };
+    el('resetBtn').dataset.bound = '1';
+  }
+
+  render();
+}
+
+function filtered() {
+  const year = el('yearFilter').value;
+  const status = el('statusFilter').value;
+  const term = norm(el('searchBox').value);
+
+  return DATA.registros
+    .filter(r =>
+      (year === 'Todos' || String(r.anio) === year) &&
+      (status === 'Todos' || r.estado_mensual === status) &&
+      (!term || norm(Object.values(r).join(' ')).includes(term))
+    )
+    .sort((a, b) => String(a.period_key).localeCompare(String(b.period_key)));
+}
+
+function renderKpis(rows) {
+  const fijoProg = rows.reduce((s, r) => s + (Number(r.fijo_programado) || 0), 0);
+  const fijoEjec = rows.reduce((s, r) => s + (Number(r.fijo_ejecutado) || 0), 0);
+  const saldo = rows.reduce((s, r) => s + (Number(r.saldo_fijo) || 0), 0);
+  const serv = rows.reduce((s, r) => s + (Number(r.servicios_basicos) || 0), 0);
+  const total = rows.reduce((s, r) => s + (Number(r.desembolso_total) || 0), 0);
+  const completos = rows.filter(r => r.estado_mensual === 'Completo').length;
+  const avance = fijoProg ? ((fijoEjec / fijoProg) * 100).toFixed(1) : '0.0';
+
+  const kpis = [
+    ['Fijo programado', fmt(fijoProg), 'Canon + expensas'],
+    ['Fijo ejecutado', fmt(fijoEjec), avance + '% del fijo'],
+    ['Saldo fijo', fmt(saldo), 'Pendiente fijo'],
+    ['Servicios registrados', fmt(serv), 'Gasto variable'],
+    ['Desembolso total', fmt(total), 'Fijo + servicios'],
+    ['Meses completos', completos + '/' + rows.length, 'Periodo filtrado'],
+    ['Meses pendientes', rows.filter(r => r.estado_mensual === 'Pendiente').length, 'Sin ejecución completa']
+  ];
+
+  el('kpis').innerHTML = kpis.map(k => `
+    <article class="kpi">
+      <div class="label">${safeText(k[0])}</div>
+      <div class="value">${safeText(k[1])}</div>
+      <div class="hint">${safeText(k[2])}</div>
+    </article>
+  `).join('');
+}
+
+function renderTable(rows) {
+  el('dataTable').querySelector('thead').innerHTML = `
+    <tr class="group">
+      <th colspan="2" class="group-id">Identificación</th>
+      <th colspan="6" class="group-canon">Canon mensual fijo - USD 2.000,00</th>
+      <th colspan="6" class="group-expensa">Expensa fija - USD 316,24</th>
+      <th colspan="6" class="group-servicio">Servicios básicos variables</th>
+      <th colspan="3" class="group-resumen">Resumen</th>
+    </tr>
+    <tr class="fields">
+      ${columns.map(c => `<th>${safeText(c.label)}</th>`).join('')}
+    </tr>
+  `;
+
+  const cell = (r, c) => {
+    const v = r[c.key];
+
+    if (c.type === 'money') {
+      return `<td class="money">${fmt(v)}</td>`;
+    }
+
+    if (c.type === 'badge') {
+      const badgeValue = v || 'Pendiente';
+      return `<td class="center"><span class="badge ${safeText(badgeValue)}">${safeText(badgeValue || '—')}</span></td>`;
+    }
+
+    if (c.type === 'link') {
+      return `<td class="center">${
+        v
+          ? `<a class="link-pill" href="${safeText(v)}" target="_blank" rel="noopener">Abrir</a>`
+          : '<span class="muted">—</span>'
+      }</td>`;
+    }
+
+    return `<td>${safeText(v ?? '—')}</td>`;
+  };
+
+  el('dataTable').querySelector('tbody').innerHTML = rows.length
+    ? rows.map(r => `<tr>${columns.map(c => cell(r, c)).join('')}</tr>`).join('')
+    : `<tr><td colspan="23" class="center muted">No existen registros con los filtros aplicados.</td></tr>`;
+}
+
+function render() {
+  const rows = filtered();
+  renderKpis(rows);
+  renderTable(rows);
+}
+
+document.addEventListener('DOMContentLoaded', loadData);
+</script>
+</body>
+</html>
