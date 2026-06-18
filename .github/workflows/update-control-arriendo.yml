@@ -1,0 +1,83 @@
+name: Actualizar control de arriendo
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 */6 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-control-arriendo
+  cancel-in-progress: false
+
+jobs:
+  update-arriendo-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Node.js 24
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Mostrar versión de Node y npm
+        run: |
+          node --version
+          npm --version
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Verificar estructura de archivos
+        run: |
+          echo "=== Contenido raíz ==="
+          ls -la
+          echo "=== Contenido carpeta scripts ==="
+          ls -la scripts || true
+          echo "=== Contenido carpeta data ==="
+          ls -la data || true
+          echo "=== package.json ==="
+          cat package.json
+
+      - name: Generar JSON desde Excel público de OneDrive
+        run: npm run build:arriendo
+
+      - name: Verificar JSON generado
+        run: |
+          echo "=== Contenido carpeta data después de generar ==="
+          ls -la data
+          echo "=== Primeros 500 caracteres del JSON de arriendo ==="
+          head -c 500 data/control-arriendo.json || true
+          echo ""
+          echo "=== Metadata de arriendo ==="
+          cat data/control-arriendo-meta.json || true
+
+      - name: Publicar cambios si existen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          echo "=== Estado antes de publicar ==="
+          git status --short
+
+          git add data/control-arriendo.json data/control-arriendo-meta.json
+
+          if git diff --cached --quiet; then
+            echo "No hay cambios en los datos de arriendo."
+            exit 0
+          fi
+
+          git commit -m "Actualizar datos de arriendo"
+
+          echo "Sincronizando con origin/main antes del push..."
+          git pull --rebase origin main
+
+          echo "Enviando cambios a GitHub..."
+          git push origin main
