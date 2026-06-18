@@ -1,7 +1,6 @@
 {
-  "generatedAt": "2026-06-18T16:52:03.890787Z",
+  "generatedAt": "2026-06-18T19:06:23.127Z",
   "records": 12,
-  "source": "uploaded-excel-preview",
   "sheetName": "Control",
   "headerRowIndex": 3,
   "headers": [
@@ -34,5 +33,9 @@
     "Saldo recurrente",
     "Estado mensual",
     "Observación de control"
-  ]
+  ],
+  "sourceName": "SharePoint download.aspx con share id",
+  "sourceUrl": "https://fiasec-my.sharepoint.com/personal/jcruzg_fias_org_ec/_layouts/15/download.aspx?share=IQC10PyN9fkiRZyU6zso_j3OAQMnmyHwJldxvOby5_U4vZc",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "bytes": 23495
 }
